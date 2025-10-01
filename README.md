@@ -2,7 +2,7 @@
 
 ## 📋 Sobre o Projeto
 
-Projeto desenvolvido utilizando React + Vite, focando em boas práticas de componentização e integração com APIs.
+O projeto desenvolvido é um site de arquitetura, utilizando React + Vite, focando em boas práticas de componentização e integração com APIs, criado para demonstrar várias técnicas e funcionalidades importantes no desenvolvimento front-end com React. Este site servirá como um excelente exemplo para portfólio e pode ser adaptado para diversos tipos de negócios.
 
 ## 🚀 Tecnologias Utilizadas
 

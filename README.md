@@ -3,7 +3,9 @@
 ## 📋 Sobre o Projeto
 
 O projeto desenvolvido é um site de arquitetura, utilizando React + Vite, focando em boas práticas de componentização e integração com APIs, criado para demonstrar várias técnicas e funcionalidades importantes no desenvolvimento front-end com React. Este site servirá como um excelente exemplo para portfólio e pode ser adaptado para diversos tipos de negócios.
-
+```
+Você pode conferir o site online aqui: https://dnc-arq-kleber.vercel.app/
+```
 ## 🚀 Tecnologias Utilizadas
 
 -   React 18+

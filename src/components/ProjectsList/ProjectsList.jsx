@@ -1,115 +1,135 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
+
+// ASSETS
 import "./ProjectsList.css";
-
-//ASSETS
-import LikedFilled from "../../assets/like-filled.svg";
+import LikeFilled from "../../assets/like-filled.svg";
 import LikeOutline from "../../assets/like.svg";
+import LoadingSpinner from "../../assets/loading-spinner.gif";
 
-//UTILS
-import { getApiData } from "../../services/apiServices";
+// COMPONENTS
+import Button from "../../components/Button/Button";
 
-//COMPONENTS
-import Button from "../Button/Button";
-
-//CONTEXT
+// CONTEXTS
 import { AppContext } from "../../contexts/createAppContext";
 
-function ProjectsList() {
-    const [projects, setProjects] = useState([]);
-    const [favProjects, setFavProjects] = useState([]);
-    const appContext = useContext(AppContext);
+// SERVICES
+import { getApiData } from "../../services/apiServices";
 
-    const handleSavedProjects = (id) => {
-        setFavProjects((prevFavProjects) => {
-            if (prevFavProjects.includes(id)) {
-                const filterArray = prevFavProjects.filter(
-                    (projectId) => projectId !== id
-                );
-                sessionStorage.setItem(
-                    "favProjects",
-                    JSON.stringify(filterArray)
-                );
-                return prevFavProjects.filter((projectId) => projectId !== id);
-            } else {
-                sessionStorage.setItem(
-                    "favProjects",
-                    JSON.stringify([...prevFavProjects, id])
-                );
-                return [...prevFavProjects, id];
-            }
-        });
-    };
+import { MediaProjectsImgs } from "../../data/mediaProjectsImgs";
+
+const ProjectsLists = () => {
+    const appContext = useContext(AppContext);
+    const [projects, setProject] = useState();
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const projectsResponse = await getApiData("projects");
-                setProjects(projectsResponse);
-            } catch {
-                setProjects([]);
+                const projects = await getApiData("projects");
+                setProject(projects);
+            // eslint-disable-next-line no-unused-vars
+            } catch (err) {
+                setProject([]);
             }
         };
 
         fetchData();
     }, []);
 
+    // FAV PROJECTS
+    const [favProjects, setFavProject] = useState([]);
+
     useEffect(() => {
         const savedFavProjects = JSON.parse(
-            sessionStorage.getItem("favProjects")
+            sessionStorage.getItem("favProjects"),
         );
         if (savedFavProjects) {
-            setFavProjects(savedFavProjects);
+            setFavProject(savedFavProjects);
         }
     }, []);
+
+    const handleFavProjects = (id) => {
+        setFavProject((prevFavProjects) => {
+            if (prevFavProjects.includes(id)) {
+                const filterArray = prevFavProjects.filter(
+                    (projectId) => projectId !== id,
+                );
+                sessionStorage.setItem(
+                    "favProjects",
+                    JSON.stringify(filterArray),
+                );
+                return prevFavProjects.filter((projectId) => projectId !== id);
+            } else {
+                sessionStorage.setItem(
+                    "favProjects",
+                    JSON.stringify([...prevFavProjects, id]),
+                );
+                return [...prevFavProjects, id];
+            }
+        });
+    };
+
     return (
         <div className="projects-section">
             <div className="projects-hero">
                 <h2>
                     {appContext.languages[appContext.language].projects.title}
                 </h2>
-                <p>
+                <p className="grey-1-color">
                     {
                         appContext.languages[appContext.language].projects
                             .subtitle
                     }
                 </p>
             </div>
-            <div className="projects-grid">
-                {projects
-                    ? projects.map((project) => (
-                          <div
-                              key={project.id}
-                              className="project-cart d-flex jc-center al-center fd-column"
-                          >
-                              <div
-                                  className="thumb tertiary-background"
-                                  style={{
-                                      backgroundImage: `url(${project.thumb})`,
-                                  }}
-                              ></div>
-                              <h3>{project.title}</h3>
-                              <p>{project.subtitle}</p>
-                              <Button
-                                  buttonStyle="unstyled"
-                                  onClick={() =>
-                                      handleSavedProjects(project.id)
-                                  }
-                              >
-                                  <img
-                                      src={
-                                          favProjects.includes(project.id)
-                                              ? LikedFilled
-                                              : LikeOutline
-                                      }
-                                      height="20px"
-                                  />
-                              </Button>
-                          </div>
-                      ))
-                    : null}
-            </div>
+            {projects ? (
+                <div className="projects-grid">
+                    {projects.map((project, index) => {
+
+                       const imgProject =
+                           MediaProjectsImgs[index % MediaProjectsImgs.length]
+                               .src;
+
+                        return (
+                            <div
+                                className="project-card d-flex jc-center al-center fd-column gap"
+                                key={project.id}
+                            >
+                                <div
+                                    className="thumb tertiary-background"
+                                    
+                                    style={{
+                                        backgroundImage: `url(${imgProject})`,
+                                    }}
+                                ></div>
+                                <h3>{project.title}</h3> 
+                                <p className="grey-1-color">
+                                    {project.subtitle}
+                                </p>
+                                <Button
+                                    buttonStyle="unstyled"
+                                    onClick={() =>
+                                        handleFavProjects(project.id)
+                                    }
+                                >
+                                    <img
+                                        src={
+                                            favProjects.includes(project.id)
+                                                ? LikeFilled
+                                                : LikeOutline
+                                        }
+                                        alt="Like"
+                                        height="30px"
+                                    />
+                                </Button>
+                            </div>
+                        );
+                    })}
+                </div>
+            ) : (
+                <img src={LoadingSpinner} alt="Loading" height="40px" />
+            )}
         </div>
     );
-}
+};
 
-export default ProjectsList;
+export default ProjectsLists;

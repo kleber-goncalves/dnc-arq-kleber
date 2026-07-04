@@ -23,7 +23,7 @@
     gap: 50px 22px;
 }
 
-.project-cart .thumb {
+.project-card .thumb {
     background-position: center;
     background-size: cover;
     border-radius: 37px;
@@ -31,14 +31,14 @@
     width: 100%;
 }
 
-.project-cart h3 {
+.project-card h3 {
     font-size: 25px;
     margin: 20px 0 0 0;
 }
 
-.project-cart p {
+.project-card p {
     font-size: 18px;
-    margin: 20px 0 0 0;
+    margin: 0 0 22px 0;
 }
 
 @media (max-width: 768px) {

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { getApiData } from "../services/apiServices";
-import { AppContext } from "./createAppContext";
 
+import { AppContext } from "./createAppContext"; 
 
 export const AppProvider = ({ children }) => {
     const savedLanguage = localStorage.getItem('lang')
@@ -10,7 +10,7 @@ export const AppProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const fetcLanguages = async () => {
+        const fetchLanguages = async () => {
             try {
                 const getTexts = await getApiData("webtext");
                 setLanguages(getTexts);
@@ -20,7 +20,7 @@ export const AppProvider = ({ children }) => {
                 setLoading(false);
             }
         };
-        fetcLanguages();
+        fetchLanguages();
     }, []);
 
     useEffect(() => {

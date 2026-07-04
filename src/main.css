@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Jost:ital,wght@0,100..900;1,100..900&display=swap");
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     margin: 0;
     min-height: 100vh; /* sempre ocupar o maximo de espaço da tela*/
@@ -22,10 +26,10 @@ a {
 }
 
 .secondary-background {
-    background-color: #1D1D1D;
+    background-color: #1d1d1d;
 }
 .secondary-color {
-    color: #1D1D1D;
+    color: #1d1d1d;
 }
 
 .tertiary-background {

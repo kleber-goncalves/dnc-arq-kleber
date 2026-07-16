@@ -23,16 +23,16 @@ Você pode conferir o site online aqui: https://dnc-arq-kleber.vercel.app/
 ## 🔧 Instalação
 
 ```bash
-# Clone o repositório
+# Clone o repositório:
 git clone https://github.com/kleber-goncalves/dnc-arq-kleber
 
-# Entre no diretório
+# Entre no diretório:
 cd dnc-arq-kleber
 
-# Instale as dependências
+# Instale as dependências:
 npm install
 
-# Inicie o projeto
+# Inicie o projeto:
 npm run dev
 ```
 

@@ -34,10 +34,12 @@ footer p {
 footer a {
     color: #4d5053;
     text-decoration: none;
+    transition: transform 0.3s ease;
 }
 
 footer a:hover {
     color: #0c70f2;
+    transform: scale(1.2);
 }
 
 footer .social-links a {
@@ -50,6 +52,14 @@ footer .social-links a {
 
 .footer-copy .langs-area {
     column-gap: 23px;
+}
+
+.unstyled {
+    transition: transform 0.3s ease;
+}
+
+.unstyled:hover {
+    transform: scale(1.1);
 }
 
 @media (max-width: 768px) {

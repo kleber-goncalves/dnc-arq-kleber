@@ -16,7 +16,6 @@ import Button from "../Button/Button";
 //CONTEXT
 import { AppContext } from "../../contexts/createAppContext";
 
-
 function Footer() {
     const appContext = useContext(AppContext);
     const changeLanguage = (country) => {

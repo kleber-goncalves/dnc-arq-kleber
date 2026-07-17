@@ -1,15 +1,8 @@
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
-
-//ASSETS
+import { Link, NavLink } from "react-router-dom";
 import "./Header.css";
 import Logo from "../../assets/dnc-logo 1.svg";
-
-//COMPONENTS
 import Button from "../Button/Button";
-
-
-//CONTEXT
 import { AppContext } from "../../contexts/createAppContext";
 
 function Header() {
@@ -17,20 +10,22 @@ function Header() {
     const toggleMenu = () => {
         setIsOpen(!isOpen);
     };
-    const appContext = useContext(AppContext)
-    
+    const appContext = useContext(AppContext);
+
     return (
         <header>
             <div className="container">
                 <div className="al-center d-flex jc-space-between">
                     <Link to="/">
-                        <img src={Logo} />
+                        <img src={Logo} alt="Logo" />
                     </Link>
+
                     <div className="mobile-menu">
                         <Button buttonStyle="secondary" onClick={toggleMenu}>
                             Menu
                         </Button>
                     </div>
+
                     <nav className={`${isOpen ? "open" : ""}`}>
                         <Button
                             buttonStyle="unstyled"
@@ -41,40 +36,40 @@ function Header() {
                         </Button>
                         <ul className="d-flex">
                             <li>
-                                <Link to="/">
+                                <NavLink to="/" end>
                                     {
                                         appContext.languages[
                                             appContext.language
                                         ].menu.home
                                     }
-                                </Link>
+                                </NavLink>
                             </li>
                             <li>
-                                <Link to="/about">
+                                <NavLink to="/about">
                                     {
                                         appContext.languages[
                                             appContext.language
                                         ].menu.about
                                     }
-                                </Link>
+                                </NavLink>
                             </li>
                             <li>
-                                <Link to="/projects">
+                                <NavLink to="/projects">
                                     {
                                         appContext.languages[
                                             appContext.language
                                         ].menu.projects
                                     }
-                                </Link>
+                                </NavLink>
                             </li>
                             <li>
-                                <Link to="/contact">
+                                <NavLink to="/contact">
                                     {
                                         appContext.languages[
                                             appContext.language
                                         ].menu.contact
                                     }
-                                </Link>
+                                </NavLink>
                             </li>
                         </ul>
                     </nav>

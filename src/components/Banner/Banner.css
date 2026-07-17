@@ -1,7 +1,8 @@
 .banner {
     background-color: #ccc;
     background-position: center;
-    background-size: cover;
+    background-size: contain;
+    background-attachment: fixed;
     height: 356px;
     width: 100%;
 }

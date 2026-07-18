@@ -1,7 +1,8 @@
 .hero {
     background-image: url(/hero.jpg);
-    background-position: center;
+    background-position: center right;
     background-size: cover;
+    background-attachment: fixed;
     border-radius: 70px;
     height: 708px;
     padding: 50px;
@@ -14,6 +15,14 @@
 
 .hero-text {
     width: 40%;
+}
+
+.button.secondary {
+    transition: transform 0.3s ease;
+}
+
+.button.secondary:hover {
+    transform: scale(1.03);
 }
 
 @media (max-width: 768px) {

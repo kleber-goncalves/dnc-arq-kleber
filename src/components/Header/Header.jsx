@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import "./Header.css";
 import Logo from "../../assets/dnc-logo 1.svg";
+import Logokl from "../../assets/logotipo/logo-4Copia.png"
 import Button from "../Button/Button";
 import { AppContext } from "../../contexts/createAppContext";
 
@@ -17,7 +18,7 @@ function Header() {
             <div className="container">
                 <div className="al-center d-flex jc-space-between">
                     <Link to="/">
-                        <img src={Logo} alt="Logo" />
+                        <img className="logo" src={Logokl} alt="Logo" />
                     </Link>
 
                     <div className="mobile-menu">

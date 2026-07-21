@@ -34,16 +34,34 @@ footer p {
 footer a {
     color: #4d5053;
     text-decoration: none;
-    transition: transform 0.3s ease;
+    transition:
+        transform 0.3s ease,
+        color 0.3s ease;
+    display: inline-block;
 }
 
 footer a:hover {
     color: #0c70f2;
-    transform: scale(1.2);
+    text-decoration: underline;
+    text-underline-offset: 6px;
+}
+
+footer a.active {
+    color: #0c70f2;
+    text-decoration: underline;
+    text-underline-offset: 6px;
 }
 
 footer .social-links a {
     margin: 25px 40px 0 0;
+}
+
+footer .social-links a:hover {
+    transform: scale(1.2);
+}
+
+footer .social-links a.active {
+    text-decoration: none;
 }
 
 .footer-copy {

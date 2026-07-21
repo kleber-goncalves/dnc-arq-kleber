@@ -1,7 +1,8 @@
 .hero {
-    background-image: url(/hero.jpg);
-    background-position: center;
+    background-image: url(/hero-1.png);
+    background-position: center right;
     background-size: cover;
+    background-attachment: fixed;
     border-radius: 70px;
     height: 708px;
     padding: 50px;

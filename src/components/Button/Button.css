@@ -24,10 +24,12 @@
 .button.secondary {
     background-color: #1d1d1d;
     color: white;
+    transition: transform 0.3s ease;
 }
 
 .button.secondary:hover {
     background-color: #4d5053;
+    transform: scale(1.03);
 }
 
 /* Unstyled */

@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 //ASSETS
 import "./Footer.css";
@@ -10,10 +10,7 @@ import FacebookIcon from "../../assets/facebook-icon.svg";
 import LinkedinIcon from "../../assets/linkedin-icon.svg";
 import InstagramIcon from "../../assets/instagram-icon.svg";
 import TwitterIcon from "../../assets/twitter-icon.svg";
-
 import Button from "../Button/Button";
-
-//CONTEXT
 import { AppContext } from "../../contexts/createAppContext";
 
 function Footer() {
@@ -34,16 +31,32 @@ function Footer() {
                             }
                         </p>
                         <div className="d-flex social-links">
-                            <a href="https://google.com" target="_blank">
+                            <a
+                                href="https://google.com"
+                                target="_blank"
+                                rel="noreferrer"
+                            >
                                 <img src={FacebookIcon} />
                             </a>
-                            <a href="https://google.com" target="_blank">
+                            <a
+                                href="https://google.com"
+                                target="_blank"
+                                rel="noreferrer"
+                            >
                                 <img src={TwitterIcon} />
                             </a>
-                            <a href="https://google.com" target="_blank">
+                            <a
+                                href="https://google.com"
+                                target="_blank"
+                                rel="noreferrer"
+                            >
                                 <img src={LinkedinIcon} />
                             </a>
-                            <a href="https://google.com" target="_blank">
+                            <a
+                                href="https://google.com"
+                                target="_blank"
+                                rel="noreferrer"
+                            >
                                 <img src={InstagramIcon} />
                             </a>
                         </div>
@@ -58,40 +71,60 @@ function Footer() {
                             </h3>
                             <ul>
                                 <li>
-                                    <Link to="/">
+                                    <NavLink
+                                        to="/"
+                                        className={({ isActive }) =>
+                                            isActive ? "active" : ""
+                                        }
+                                    >
                                         {
                                             appContext.languages[
                                                 appContext.language
                                             ].menu.home
                                         }
-                                    </Link>
+                                    </NavLink>
                                 </li>
                                 <li>
-                                    <Link to="/about">
+                                    <NavLink
+                                        to="/about"
+                                        className={({ isActive }) =>
+                                            isActive ? "active" : ""
+                                        }
+                                    >
                                         {
                                             appContext.languages[
                                                 appContext.language
                                             ].menu.about
                                         }
-                                    </Link>
+                                    </NavLink>
                                 </li>
                                 <li>
-                                    <Link to="/projects">
+                                    <NavLink
+                                        to="/projects"
+                                        className={({ isActive }) =>
+                                            isActive ? "active" : ""
+                                        }
+                                    >
                                         {
                                             appContext.languages[
                                                 appContext.language
                                             ].menu.projects
                                         }
-                                    </Link>
+                                    </NavLink>
                                 </li>
                                 <li>
-                                    <Link to="/contact">
+                                    <NavLink
+                                        to="/contact"
+                                        className={({ isActive }) =>
+                                            isActive ? "active" : ""
+                                        }
+                                    >
                                         {
                                             appContext.languages[
                                                 appContext.language
                                             ].menu.contact
                                         }
-                                    </Link>
+                                    </NavLink>
                                 </li>
                             </ul>
                         </div>
